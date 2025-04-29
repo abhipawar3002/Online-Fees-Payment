@@ -26,14 +26,10 @@ import com.system.project.entities.Caste;
 import com.system.project.entities.Class;
 import com.system.project.entities.Course;
 import com.system.project.entities.Fees;
-import com.system.project.entities.Student;
 import com.system.project.service.CasteService;
 import com.system.project.service.ClassService;
 import com.system.project.service.CourseService;
 import com.system.project.service.FeesService;
-import com.system.project.service.PaymentService;
-import com.system.project.service.StudentService;
-
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -54,11 +50,7 @@ public class AdminController<Payment> {
     @Autowired
     private FeesService feesService;
     
-    @Autowired
-    private StudentService studentService;
     
-    @Autowired
-    private PaymentService paymentService;
     
    
 

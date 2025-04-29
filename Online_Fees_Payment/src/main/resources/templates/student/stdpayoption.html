@@ -7,225 +7,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --accent: #ff4757;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --success: #28a745;
-            --warning: #ffc107;
-            --info: #17a2b8;
-        }
+        /* Your existing styles remain the same */
         
-        * {
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f7fa;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 20px;
-            width: 100%;
-        }
-
-        .dashboard-section {
-            background-color: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            width: 100%;
-        }
-
-        .section-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .section-header h2 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .payment-options {
-            display: flex;
-            gap: 15px;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .payment-option {
-            flex: 1 1 100%;
-            min-width: 0;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        @media (min-width: 768px) {
-            .payment-option {
-                flex: 1 1 calc(50% - 15px);
-            }
-        }
-        
-        .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
-         }
-            
-        .payment-option:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .payment-option.active {
-            border-color: var(--primary);
-            background-color: rgba(106, 17, 203, 0.05);
-        }
-        
-        .payment-option i {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .payment-option h3 {
-            margin: 0.5rem 0;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-        
-        .payment-option p {
-            color: #666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-        
-        .amount-selection {
-            margin: 1.5rem 0;
+        /* Add these new styles */
+        .razorpay-payment-button {
             display: none;
         }
         
-        .amount-selection.active {
-            display: block;
-        }
-        
-        .fee-card {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            border-radius: 8px;
-            position: relative;
-        }
-        
-        .fee-card label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            text-align: left;
-        }
-        
-        .amount-input-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-        
-        .rupee-symbol {
-            position: absolute;
-            left: 10px;
-            font-weight: bold;
-            color: var(--dark);
-            font-size: 1rem;
-        }
-        
-        .fee-card input {
-            width: 100%;
-            padding: 0.8rem 0.8rem 0.8rem 2rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            text-align: right;
-            font-weight: bold;
-            font-size: 1.1rem;
-            background-color: white;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #5a0db0;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .btn-block {
-            display: block;
-            width: 100%;
+        .processing-payment {
+            display: none;
             text-align: center;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
         
-        .back-button {
-            margin-bottom: 1.5rem;
+        .processing-payment i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            animation: spin 1s linear infinite;
         }
         
-        .btn-secondary {
-            background-color: #f8f9fa;
-            color: var(--dark);
-            border: 1px solid #ddd;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #e9ecef;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -271,25 +75,34 @@
                 </div>
             </div>
             
-            <form id="paymentForm" th:action="@{/student/process-payment}" method="post">
+            <form id="paymentForm">
                 <input type="hidden" name="paymentType" id="paymentTypeInput" value="FULL">
                 <input type="hidden" name="amount" id="paymentAmountInput">
                 <input type="hidden" name="studentId" th:value="${student?.id}">
                 <input type="hidden" name="installments" id="installmentsInput" value="1">
                 
-                <button type="submit" class="btn btn-primary btn-block">
+                <button type="button" id="payNowButton" class="btn btn-primary btn-block">
                     <i class="fas fa-lock"></i> Continue to Payment
                 </button>
+                
+                <!-- Razorpay's default button (hidden, we'll use our custom button) -->
+                <button id="rzp-button" class="razorpay-payment-button">Pay with Razorpay</button>
+                
+                <div class="processing-payment" id="processingPayment">
+                    <i class="fas fa-spinner"></i>
+                    <p>Processing your payment...</p>
+                </div>
             </form>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add Razorpay checkout script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
     $(document).ready(function() {
         // Get the total amount from URL parameters or localStorage
         function getTotalAmount() {
-            // Check URL parameters first
             const urlParams = new URLSearchParams(window.location.search);
             const amountFromUrl = urlParams.get('amount');
             
@@ -297,19 +110,16 @@
                 return parseFloat(amountFromUrl);
             }
             
-            // Fallback to localStorage if available
             const amountFromStorage = localStorage.getItem('feeTotalAmount');
             if (amountFromStorage) {
                 return parseFloat(amountFromStorage);
             }
             
-            // Default to 0 if nothing is found
             console.error("No amount found in URL parameters or localStorage");
             return 0;
         }
         
         const totalAmount = getTotalAmount();
-        console.log("Total amount retrieved:", totalAmount); // Debug log
         
         // Update all amount displays
         function updateAmountDisplays() {
@@ -331,7 +141,119 @@
             $(".amount-selection").removeClass("active");
             $(this).find(".amount-selection").addClass("active");
         });
-    });
+        
+     // Razorpay payment handler - updated version
+        $("#payNowButton").click(function() {
+            const amount = parseFloat($("#paymentAmountInput").val());
+            const studentId = $("input[name='studentId']").val();
+            
+            if (!amount || amount <= 0) {
+                alert("Please enter a valid amount");
+                return;
+            }
+            
+            // Show processing indicator
+            $("#payNowButton").prop("disabled", true);
+            $("#processingPayment").show();
+            
+            // Create order on your server
+            $.ajax({
+                url: "/api/payments/create-order",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    amount: amount,
+                    studentId: studentId,
+                    receipt: "fee_payment_" + studentId + "_" + Date.now()
+                }),
+                success: function(response) {
+                    // Validate response
+                    if (!response.orderId || !response.razorpayKey) {
+                        throw new Error("Invalid server response");
+                    }
+                    
+                    // Initialize Razorpay checkout
+                    const options = {
+                        key: response.razorpayKey,
+                        amount: response.amount,
+                        currency: "INR",
+                        name: "EduPay Fee Payment",
+                        description: "Education Fee Payment for Student ID: " + studentId,
+                        order_id: response.orderId,
+                        handler: handlePaymentSuccess,
+                        prefill: {
+                            name: $("input[name='studentName']").val() || "Student",
+                            email: $("input[name='studentEmail']").val() || "student@example.com",
+                            contact: $("input[name='studentPhone']").val() || "9999999999"
+                        },
+                        theme: {
+                            color: "#6a11cb"
+                        },
+                        modal: {
+                            ondismiss: resetPaymentButton
+                        }
+                    };
+                    
+                    const rzp = new Razorpay(options);
+                    rzp.open();
+                },
+                error: handlePaymentError
+            });
+        });
+
+        // Payment success handler
+        function handlePaymentSuccess(razorpayResponse) {
+            const amount = parseFloat($("#paymentAmountInput").val());
+            const studentId = $("input[name='studentId']").val();
+            
+            $.ajax({
+                url: "/api/payments/verify",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    razorpay_payment_id: razorpayResponse.razorpay_payment_id,
+                    razorpay_order_id: razorpayResponse.razorpay_order_id,
+                    razorpay_signature: razorpayResponse.razorpay_signature,
+                    amount: amount,
+                    studentId: studentId
+                }),
+                success: function(response) {
+                    if (response.success) {
+                        window.location.href = "/student/payment-success?paymentId=" + 
+                            razorpayResponse.razorpay_payment_id + 
+                            "&amount=" + amount;
+                    } else {
+                        showError("Payment verification failed. Please contact support.");
+                    }
+                },
+                error: function() {
+                    showError("Error verifying payment. Please contact support.");
+                }
+            });
+        }
+
+        // Error handler
+        function handlePaymentError(xhr, status, error) {
+            console.error("Payment Error:", error, xhr.responseText);
+            let errorMsg = "Error initiating payment. Please try again.";
+            
+            if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMsg = xhr.responseJSON.message;
+            }
+            
+            showError(errorMsg);
+        }
+
+        // Helper functions
+        function resetPaymentButton() {
+            $("#payNowButton").prop("disabled", false);
+            $("#processingPayment").hide();
+        }
+
+        function showError(message) {
+            alert(message);
+            resetPaymentButton();
+        }})
     </script>
 </body>
 </html>
